@@ -1,5 +1,6 @@
 package dev.waiyanhtet.samplecodetest.config;
 
+import dev.waiyanhtet.samplecodetest.exception.CustomAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class SecurityConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
+    private final CustomAccessDeniedHandler accessDeniedHandler;
     private final TokenResourceSeverConfig tokenResourceSeverConfig;
 
     @Bean
@@ -37,6 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated())
+                .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler))
                 .oauth2ResourceServer(oauth2 -> oauth2.opaqueToken(opaqueToken -> opaqueToken.introspector(customIntrospector())))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

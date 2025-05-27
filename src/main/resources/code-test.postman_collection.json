@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "c6d8eaef-7e56-4265-9e1f-db3cbf84e72b",
+		"name": "code-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33180061",
+		"_collection_link": "https://mr-egg-team-2024.postman.co/workspace/private-workspace~6375345d-3add-4c7a-94ef-de15c24cf202/collection/33180061-c6d8eaef-7e56-4265-9e1f-db3cbf84e72b?action=share&source=collection_link&creator=33180061"
+	},
+	"item": [
+		{
+			"name": "token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "L3xLZ28FsTpOmfj6jcgi",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "QQ-Delivery",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abc123",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev.gigagates.com/qq-delivery-auth-server/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"gigagates",
+						"com"
+					],
+					"path": [
+						"qq-delivery-auth-server",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-person",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cBTnBvYSIgalSSTt_MNxx2S80Ic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"waiyan\",\n    \"phone\" : \"09254295287\",\n    \"address\" : \"yangon\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/v1/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"v1",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "one-person",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cBTnBvYSIgalSSTt_MNxx2S80Ic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/v1/person/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"v1",
+						"person",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all-person",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cBTnBvYSIgalSSTt_MNxx2S80Ic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/v1/person/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"v1",
+						"person",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

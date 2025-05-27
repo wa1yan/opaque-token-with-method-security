@@ -24,14 +24,14 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasAuthority('USER_READ')")
+    @PreAuthorize("hasAuthority('NO_READ_TEST')")
     public ResponseEntity<PersonDto> getPerson(@PathVariable Long id) {
         var personDto = personService.getOnePerson(id);
         return ResponseEntity.ok(personDto);
     }
 
     @GetMapping(value = "/all")
-    @PreAuthorize("hasAuthority('USER_UPDATE')") //just tested with USER_UPDATE (If token's scope include 'update', we can call this api)
+    @PreAuthorize("hasAuthority('USER_READ')")
     public ResponseEntity<AllPersonResponse> getAllPerson() {
         var personDtoList = personService.getAllPerson();
         return ResponseEntity.ok(AllPersonResponse.builder()
