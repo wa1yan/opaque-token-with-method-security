@@ -1,0 +1,32 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: sample-code-test
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sample_db?useSSL=false #create db scheme and add scheme name
+    username: username #change db username
+    password: password #change db password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+token-resource-server-config:
+  token-check-uri: "token-check-url" #add token check url
+  client-id: "client-id" #add client id
+  client-secret: "client-secret" #add client secret
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
